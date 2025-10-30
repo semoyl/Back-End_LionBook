@@ -1,44 +1,43 @@
 -- ****************************************************************************************
 -- Objetivo: Script SQL para criar e popular o banco de dados LionBook
 -- Data: 30/10/2025
--- Autor: Sistema LionBook
+-- Autor: Gustavo Rocha
 -- Versão: 1.0
 -- ****************************************************************************************
 
--- Criação do banco de dados
-CREATE DATABASE IF NOT EXISTS db_lionbooks;
+CREATE DATABASE db_lionbooks;
 USE db_lionbooks;
 
--- Criação das tabelas
-CREATE TABLE IF NOT EXISTS tbl_usuario (
+CREATE TABLE tbl_usuario (
     id INT NOT NULL AUTO_INCREMENT,
     login VARCHAR(45) NOT NULL,
     senha VARCHAR(45) NOT NULL,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS tipo_movimentacao (
+CREATE TABLE tipo_movimentacao (
     id INT NOT NULL AUTO_INCREMENT,
     tipo VARCHAR(45) NOT NULL,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS tbl_livro (
+CREATE TABLE tbl_livro (
     id INT NOT NULL AUTO_INCREMENT,
     titulo VARCHAR(100) NOT NULL,
     data_publicacao DATE,
-    quantidade INT,
+    quantidade INT, -- A quantidade atual em estoque
     isbn VARCHAR(45),
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS tbl_movimentacao (
+
+CREATE TABLE tbl_movimentacao (
     id INT NOT NULL AUTO_INCREMENT,
-    id_movimentacao INT NOT NULL,
-    id_usuario INT NOT NULL,
-    quantidade INT NOT NULL,
+    id_movimentacao INT NOT NULL,  -- Chave estrangeira para o TIPO de movimentação (Entrada/Saída)
+    id_usuario INT NOT NULL,       -- Chave estrangeira para o USUÁRIO que realizou a movimentação
+    quantidade INT NOT NULL,       -- Quantidade de livros movimentados
     data_movimentacao DATE NOT NULL,
-    id_livro INT NOT NULL,
+    id_livro INT NOT NULL,         -- Chave estrangeira para o LIVRO movimentado
     PRIMARY KEY (id),
     
     FOREIGN KEY (id_movimentacao) REFERENCES tipo_movimentacao(id),
@@ -46,25 +45,27 @@ CREATE TABLE IF NOT EXISTS tbl_movimentacao (
     FOREIGN KEY (id_livro) REFERENCES tbl_livro(id)
 );
 
--- Inserção de dados iniciais
 
--- Tipos de movimentação
-INSERT INTO tipo_movimentacao (tipo) VALUES 
-('Entrada'),
-('Saída');
+INSERT INTO tbl_usuario (login, senha) VALUES
+('joao.admin', 'senha123'),
+('maria.bibli', 'bibliotech'),
+('pedro.estoque', 'est123');
 
--- Usuário padrão para testes
-INSERT INTO tbl_usuario (login, senha) VALUES 
-('admin', 'admin123'),
-('bibliotecario', 'biblio123');
+INSERT INTO tipo_movimentacao (tipo) VALUES
+('Entrada (Compra/Doação)'),
+('Saída (Venda/Empréstimo)');
 
--- Livros de exemplo
-INSERT INTO tbl_livro (titulo, data_publicacao, quantidade, isbn) VALUES 
-('JavaScript: O Guia Definitivo', '2020-01-15', 10, '978-85-7522-594-8'),
-('Python para Desenvolvedores', '2019-03-20', 8, '978-85-7522-123-4'),
-('Estruturas de Dados e Algoritmos em Java', '2021-06-10', 5, '978-85-7522-789-0'),
-('Banco de Dados: Projeto e Implementação', '2018-11-05', 12, '978-85-7522-456-1'),
-('Engenharia de Software', '2020-08-22', 7, '978-85-7522-321-9'),
-('Redes de Computadores', '2019-12-18', 6, '978-85-7522-654-0'),
-('Sistemas Operacionais Modernos', '2021-04-30', 9, '978-85-7522-987-3'),
-('Introdução à Programação Web', '2020-02-14', 15, '978-85-7522-234-5');
+INSERT INTO tbl_livro (titulo, data_publicacao, quantidade, isbn) VALUES
+('Dom Casmurro', '1899-01-01', 15, '978-8572328227'),
+('1984', '1949-06-08', 22, '978-8535914849'),
+('Cem Anos de Solidão', '1967-05-30', 10, '978-8501012651'),
+('O Pequeno Príncipe', '1943-04-06', 35, '978-8595082161');
+
+INSERT INTO tbl_movimentacao (id_movimentacao, id_usuario, quantidade, data_movimentacao, id_livro) VALUES
+(1, 1, 5, '2025-10-25', 1),
+
+(2, 2, 3, '2025-10-26', 2),
+
+(1, 3, 10, '2025-10-29', 4);
+
+SELECT * from tbl_usuario;
