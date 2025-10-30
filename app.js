@@ -45,7 +45,7 @@ app.use((request, response, next) => {
 
 /*************************** ENDPOINTS DE LIVROS ***************************/
 
-//Endpoint para inserir um livro no BD (RF002 - Gerenciar Livros)
+//Endpoint para inserir um livro no BD
 app.post('/v1/lionbook/livro', cors(), bodyParserJSON, async function (request, response) {
 
     //Recebe o content type para validar o tipo de dados da requisição
@@ -61,7 +61,7 @@ app.post('/v1/lionbook/livro', cors(), bodyParserJSON, async function (request, 
 
 })
 
-//Endpoint para retornar uma lista de livros (RF001 - Visualização do Acervo)
+//Endpoint para retornar uma lista de livros
 app.get('/v1/lionbook/livros', cors(), async function(request, response){
     //Chama a função para listar livros
     let resultLivro = await controllerLivro.listarLivro()
@@ -83,7 +83,7 @@ app.get('/v1/lionbook/livro/:id', cors(), async function (request, response) {
     response.json(resultLivro)
 })
 
-//Endpoint para buscar livros por título (RF003 - Busca Rápida)
+//Endpoint para buscar livros por título
 app.get('/v1/lionbook/livros/buscar/:titulo', cors(), async function (request, response) {
 
     //Cria o Request para receber o título
@@ -96,7 +96,7 @@ app.get('/v1/lionbook/livros/buscar/:titulo', cors(), async function (request, r
     response.json(resultLivro)
 })
 
-//Endpoint para deletar um livro pelo ID (RF002 - Gerenciar Livros)
+//Endpoint para deletar um livro pelo ID
 app.delete('/v1/lionbook/livro/:id', cors(), async function (request, response) {
 
     //Cria o Request para receber o id
@@ -109,7 +109,7 @@ app.delete('/v1/lionbook/livro/:id', cors(), async function (request, response) 
     response.json(resultLivro)
 })
 
-//Endpoint para atualizar um livro pelo ID (RF002 - Gerenciar Livros)
+//Endpoint para atualizar um livro pelo ID
 app.put('/v1/lionbook/livro/:id', cors(), bodyParserJSON, async function (request, response) {
     
     //Recebe o content type da requisição
@@ -127,7 +127,7 @@ app.put('/v1/lionbook/livro/:id', cors(), bodyParserJSON, async function (reques
 
 /********************* ENDPOINTS DE MOVIMENTAÇÕES **********************/
 
-//Endpoint para inserir uma movimentação (entrada/saída) (RF004 - Controlar Entrada e Saída)
+//Endpoint para inserir uma movimentação (entrada/saída)
 app.post('/v1/lionbook/movimentacao', cors(), bodyParserJSON, async function (request, response) {
 
     //Recebe o content type para validar o tipo de dados da requisição

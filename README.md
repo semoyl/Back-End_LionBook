@@ -51,7 +51,7 @@ A API estará disponível em: `http://localhost:8080`
 ### Status da API
 - **GET** `/v1/lionbook/status` - Verifica se a API está funcionando
 
-### Livros (RF001, RF002, RF003)
+### Livros
 - **GET** `/v1/lionbook/livros` - Lista todos os livros
 - **GET** `/v1/lionbook/livro/:id` - Busca livro por ID
 - **GET** `/v1/lionbook/livros/buscar/:titulo` - Busca livros por título
@@ -59,7 +59,7 @@ A API estará disponível em: `http://localhost:8080`
 - **PUT** `/v1/lionbook/livro/:id` - Atualiza livro
 - **DELETE** `/v1/lionbook/livro/:id` - Remove livro
 
-### Movimentações (RF004)
+### Movimentações
 - **GET** `/v1/lionbook/movimentacoes` - Lista todas as movimentações  
 - **GET** `/v1/lionbook/movimentacao/:id` - Busca movimentação por ID
 - **GET** `/v1/lionbook/movimentacoes/livro/:id` - Lista movimentações de um livro
