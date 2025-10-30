@@ -131,13 +131,6 @@ Content-Type: application/json
 └── package.json
 ```
 
-## ✅ Requisitos Funcionais Implementados
-
-- **RF001** - Visualização do Acervo: Listagem completa de livros com status
-- **RF002** - Gerenciar Livros (CRUD): Criar, ler, atualizar e deletar livros
-- **RF003** - Busca Rápida: Filtro por título de livro
-- **RF004** - Controlar Entrada e Saída: Registro de movimentações com atualização automática do estoque
-
 ## 🔍 Códigos de Status HTTP
 
 - **200** - Sucesso
