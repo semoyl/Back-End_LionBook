@@ -1,7 +1,7 @@
 /****************************************************************************************
  * Objetivo: Arquivo de padronização de mensagens e status code para o projeto LionBook
  * Data: 30/10/2025
- * Autor: Sistema LionBook
+ * Autor: Gustavo Rocha
  * Versão: 1.0
  **************************************************************************************/
 

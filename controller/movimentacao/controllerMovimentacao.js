@@ -1,7 +1,7 @@
 /****************************************************************************************
  * Objetivo: Controller responsável pela regra de negócio do CRUD da movimentação
  * Data: 30/10/2025
- * Autor: Sistema LionBook
+ * Autor: Gustavo Rocha
  * Versão: 1.0
  * **************************************************************************************/
 //Import do arquivo de configuração para mensagens e status code

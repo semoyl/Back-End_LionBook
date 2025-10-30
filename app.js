@@ -1,7 +1,7 @@
 /****************************************************************************************
  * Objetivo: API referente ao projeto Sistema de Gestão de Acervo - LionBook
  * Data: 30/10/2025
- * Autor: Sistema LionBook
+ * Autor: Gustavo Rocha
  * Versão: 1.0
  * Observação:
  *********Para configurar e insatalar a API, precisamos das seguintes bibliotecas

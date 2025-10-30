@@ -1,7 +1,7 @@
 /****************************************************************************************
  * Objetivo: Model responsável pelo CRUD de dados referente a movimentações no banco de dados
  * Data: 30/10/2025
- * Autor: Sistema LionBook
+ * Autor: Gustavo Rocha
  * Versão: 1.0
  **************************************************************************************/
 

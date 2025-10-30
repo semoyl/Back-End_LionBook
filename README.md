@@ -162,3 +162,5 @@ Content-Type: application/json
 ---
 
 **Sistema LionBook v1.0** - Desenvolvido para gestão eficiente de acervos bibliotecários
+
+**Autor:** Gustavo Rocha
