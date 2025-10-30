@@ -27,6 +27,7 @@ const bodyParser= require('body-parser')
 //Import das controllers para realizar o CRUD de dados
 const controllerLivro = require('./controller/livro/controllerLivro.js')
 const controllerMovimentacao = require('./controller/movimentacao/controllerMovimentacao.js')
+const controllerUsuario = require('./controller/usuario/controllerUsuario.js')
 
 //Estabelecendo o formato de dados que devera chegar no body da requisição (POST ou PUT)
 const bodyParserJSON = bodyParser.json()
@@ -185,6 +186,62 @@ app.get('/v1/lionbook/tipos-movimentacao', cors(), async function(request, respo
 
     response.status(resultTipos.status_code)
     response.json(resultTipos)
+})
+
+/************************** ENDPOINTS DE USUÁRIOS **************************/
+
+//Endpoint para autenticar usuário (RF005 - Autenticar usuário)
+app.post('/v1/lionbook/login', cors(), bodyParserJSON, async function (request, response) {
+
+    //Recebe o content type para validar o tipo de dados da requisição
+    let contentType = request.headers['content-type']
+    //Recebe o conteúdo do body da requisição
+    let dadosBody = request.body
+
+    //Encaminhando os dados do body da requisição para a controller autenticar
+    let resultLogin = await controllerUsuario.autenticarUsuario(dadosBody, contentType)
+
+    response.status(resultLogin.status_code)
+    response.json(resultLogin)
+
+})
+
+//Endpoint para cadastrar usuário (apenas para uso via Postman)
+app.post('/v1/lionbook/usuario', cors(), bodyParserJSON, async function (request, response) {
+
+    //Recebe o content type para validar o tipo de dados da requisição
+    let contentType = request.headers['content-type']
+    //Recebe o conteúdo do body da requisição
+    let dadosBody = request.body
+
+    //Encaminhando os dados do body da requisição para a controller inserir no BD
+    let resultUsuario = await controllerUsuario.inserirUsuario(dadosBody, contentType)
+
+    response.status(resultUsuario.status_code)
+    response.json(resultUsuario)
+
+})
+
+//Endpoint para listar usuários
+app.get('/v1/lionbook/usuarios', cors(), async function(request, response){
+    //Chama a função para listar usuários
+    let resultUsuario = await controllerUsuario.listarUsuario()
+
+    response.status(resultUsuario.status_code)
+    response.json(resultUsuario)
+})
+
+//Endpoint para buscar um usuário pelo ID
+app.get('/v1/lionbook/usuario/:id', cors(), async function (request, response) {
+
+    //Cria o Request para receber o id
+    let idUsuario = request.params.id
+
+    //Chama a função para buscar usuário pelo id
+    let resultUsuario = await controllerUsuario.buscarUsuario(idUsuario)
+
+    response.status(resultUsuario.status_code)
+    response.json(resultUsuario)
 })
 
 //Endpoint para verificar se a API está funcionando

@@ -66,6 +66,12 @@ A API estará disponível em: `http://localhost:8080`
 - **POST** `/v1/lionbook/movimentacao` - Registra nova movimentação
 - **GET** `/v1/lionbook/tipos-movimentacao` - Lista tipos de movimentação
 
+### Usuários
+- **POST** `/v1/lionbook/login` - Autentica usuário (login)
+- **POST** `/v1/lionbook/usuario` - Cadastra novo usuário (via Postman)
+- **GET** `/v1/lionbook/usuarios` - Lista todos os usuários
+- **GET** `/v1/lionbook/usuario/:id` - Busca usuário por ID
+
 ## 📝 Exemplos de Uso
 
 ### Cadastrar um livro
@@ -109,18 +115,43 @@ Content-Type: application/json
 }
 ```
 
+### Fazer login
+```json
+POST /v1/lionbook/login
+Content-Type: application/json
+
+{
+  "login": "admin",
+  "senha": "admin123"
+}
+```
+
+### Cadastrar usuário (via Postman)
+```json
+POST /v1/lionbook/usuario
+Content-Type: application/json
+
+{
+  "login": "bibliotecario2",
+  "senha": "minhasenha123"
+}
+```
+
 ## 🏗️ Estrutura do Projeto
 
 ```
 ├── controller/
 │   ├── livro/
 │   │   └── controllerLivro.js
-│   └── movimentacao/
-│       └── controllerMovimentacao.js
+│   ├── movimentacao/
+│   │   └── controllerMovimentacao.js
+│   └── usuario/
+│       └── controllerUsuario.js
 ├── model/
 │   └── DAO/
 │       ├── livro.js
-│       └── movimentacao.js
+│       ├── movimentacao.js
+│       └── usuario.js
 ├── modulo/
 │   └── config.js
 ├── database/
